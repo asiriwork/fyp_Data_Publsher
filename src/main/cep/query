@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<executionPlan name="RecklessDrivingFinder" statistics="disable"
+               trace="enable" xmlns="http://wso2.org/carbon/eventprocessor">
+    <description>Let s find</description>
+    <siddhiConfiguration>
+        <property name="siddhi.persistence.snapshot.time.interval.minutes">0</property>
+        <property name="siddhi.enable.distributed.processing">false</property>
+    </siddhiConfiguration>
+    <importedStreams>
+        <stream as="obd_speed" name="org.wso2.fyp.ObdTelematics" version="2.3.1"/>
+    </importedStreams>
+    <queryExpressions><![CDATA[
+
+from a=obd_speed,b=obd_speed
+select b.speed-a.speed as speedDifference,
+b.time - a.time  as timeInterval, b.time as timeStamp
+insert into obd_accele_calculation;
+from obd_accele_calculation
+   select fyp:acceleration(speedDifference,timeInterval, 1.0) as acceleration , timeStamp
+   insert into obd_acceleration;
+   from obd_acceleration#window.timeBatch(10 seconds)
+   select sum(acceleration) as acceleCount , max(timeStamp) as timeStamp
+   insert into obd_accele_count;
+   ]]></queryExpressions>
+    <exportedStreams>
+        <stream name="obd_accele_calculation"
+                valueOf="obd_accele_calculation" version="1.0.0"/>
+        <stream name="obd_acceleration" valueOf="obd_acceleration" version="1.0.0"/>
+        <stream name="obd_accele_count" valueOf="obd_accele_count" version="1.0.0"/>
+    </exportedStreams>
+</executionPlan>
+                                    
