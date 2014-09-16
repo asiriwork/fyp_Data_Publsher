@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="com.google.gson_2.1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/com.google.gson_2.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/commons-pool_1.5.6.wso2v1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/libthrift_0.7.0.wso2v1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/org.wso2.carbon.databridge.agent.thrift-4.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/org.wso2.carbon.databridge.commons.thrift_4.0.0.SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/org.wso2.carbon.databridge.commons_4.0.0.SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/org.wso2.carbon.logging_4.0.0.SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../data-publisher/lib/slf4j_1.5.10.wso2v1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
